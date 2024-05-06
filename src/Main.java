@@ -1,42 +1,38 @@
-//то что находится в "//" первая задача
-import java.util.Scanner;
+import java.util.Random;
 
 public class Main {
 
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Введите ваш возраст: ");
-        int age = scanner.nextInt();
-
-        System.out.print("Введите температуру на улице: ");
-        double temperature = scanner.nextDouble();
-/*
-        String result = PermissionChecker.permission(age, temperature);
-        System.out.println(result);
-*/
-        scanner.close();
-    }
-/*
-    public static class PermissionChecker {
-
-        public static String permission(int age, double temperature) {
-            if (age >= 18 && temperature >= 20) {
-                return "Да, вы можете выходить на улицу.";
-            } else {
-                return "Нет, лучше остаться дома.";
-            }
-        }
-    }
-*/
-    public static String goForAWalk(int age, int temperature) {
+    //1
+    public static String permission(int age, int temperature) {
+        //2
         if ((age >= 20 && age <= 45 && temperature >= -20 && temperature <= 30) ||
                 (age < 20 && temperature >= 0 && temperature <= 28) ||
                 (age > 45 && temperature >= -10 && temperature <= 25)) {
             return "Можно идти гулять";
         } else {
             return "Оставайтесь дома";
+        }
+    }
+
+    //4
+    public static int generateRandomAge() {
+        Random random = new Random();
+        return random.nextInt(100) + 1;
+    }
+
+    public static int generateRandomTemperature() {
+        Random random = new Random();
+        return random.nextInt(71) - 30;
+    }
+
+    public static void main(String[] args) {
+        //3
+        for (int i = 0; i < 5; i++) {
+            //5
+            int randomAge = generateRandomAge();
+            int randomTemperature = generateRandomTemperature();
+            String result = permission(randomAge, randomTemperature);
+            System.out.println("Возраст: " + randomAge + ", Температура: " + randomTemperature + " - " + result);
         }
     }
 }
